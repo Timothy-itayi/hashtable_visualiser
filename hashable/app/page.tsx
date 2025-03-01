@@ -32,14 +32,17 @@ export default function HashTableVisualizer() {
             <ul>
               <li>Stores single values (strings)</li>
               <li>Similar to a basic array with hashed indices</li>
-              <li>Example: "hello" → index 0</li>
-            </ul>
+              <ul>
+  <li>Example: &quot;hello&quot; → index 0</li>
+</ul>
 
-            <p><strong>Key-Value Hash Table:</strong></p>
-            <ul>
-              <li>Stores pairs of values (like a dictionary)</li>
-              <li>The key is hashed to determine storage location</li>
-              <li>Example: "name": "John" → index 0</li>
+<p><strong>Key-Value Hash Table:</strong></p>
+<ul>
+  <li>Stores pairs of values (like a dictionary)</li>
+  <li>The key is hashed to determine storage location</li>
+  <li>Example: &quot;name&quot;: &quot;John&quot; → index 0</li>
+</ul>
+
               <li>More like real-world hash table implementations</li>
             </ul>
           </div>

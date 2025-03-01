@@ -19,6 +19,19 @@ export function HashTable({ className }: HashTableProps) {
   const [result, setResult] = useState("")
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
+   // Initialize empty hash table
+   const initializeEmptyTable = (size: number) => {
+    console.log('Initializing empty table of size:', size)
+    const newHashTable: Record<number, string[]> = {}
+    for (let i = 0; i < size; i++) {
+      newHashTable[i] = []
+    }
+    setHashTable(newHashTable)
+    saveToLocalStorage(newHashTable, size)
+  }
+
+
+
   // Load saved data on initial mount
   useEffect(() => {
     const savedData = localStorage.getItem('hashTableData')
@@ -33,19 +46,9 @@ export function HashTable({ className }: HashTableProps) {
       // Initialize empty hash table
       initializeEmptyTable(tableSize)
     }
-  }, [])
+  }, [initializeEmptyTable, tableSize])
 
-  // Initialize empty hash table
-  const initializeEmptyTable = (size: number) => {
-    console.log('Initializing empty table of size:', size)
-    const newHashTable: Record<number, string[]> = {}
-    for (let i = 0; i < size; i++) {
-      newHashTable[i] = []
-    }
-    setHashTable(newHashTable)
-    saveToLocalStorage(newHashTable, size)
-  }
-
+ 
   // Save to localStorage
   const saveToLocalStorage = (table: Record<number, string[]>, size: number) => {
     const dataToSave: StoredHashTableData = {

@@ -25,18 +25,8 @@ export function HashTableKV({ className }: HashTableProps) {
   const [result, setResult] = useState("")
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
-  // Load saved data on initial mount
-  useEffect(() => {
-    const savedData = localStorage.getItem('hashTableKVData')
-    if (savedData) {
-      const parsedData = JSON.parse(savedData) as StoredHashTableData
-      setHashTable(parsedData.hashTable)
-      setTableSize(parsedData.tableSize)
-    } else {
-      initializeEmptyTable(tableSize)
-    }
-  }, [])
 
+  
   const initializeEmptyTable = (size: number) => {
     const newHashTable: Record<number, HashEntry[]> = {}
     for (let i = 0; i < size; i++) {
@@ -45,6 +35,22 @@ export function HashTableKV({ className }: HashTableProps) {
     setHashTable(newHashTable)
     saveToLocalStorage(newHashTable, size)
   }
+
+
+  // Load saved data on initial mount
+  useEffect(() => {
+    const savedData = localStorage.getItem("hashTableKVData");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData) as StoredHashTableData;
+      setHashTable(parsedData.hashTable);
+      setTableSize(parsedData.tableSize);
+    } else {
+      initializeEmptyTable(tableSize);
+    }
+  }, [initializeEmptyTable, tableSize]); // ✅ Added missing dependencies
+  
+
+
 
   const saveToLocalStorage = (table: Record<number, HashEntry[]>, size: number) => {
     const dataToSave: StoredHashTableData = {
