@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "HashTable Visualizer",
   description: "A Windows 98-style HashTable Visualizer",
+  icons: {
+    icon: [
+      { url: "/icon.png" },
+    ],
+  },
 }
 
 export default function RootLayout({
