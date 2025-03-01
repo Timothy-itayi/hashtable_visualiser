@@ -1,6 +1,11 @@
 /* Remove all Tailwind imports and custom properties */
 body {
   background: #008080;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  margin: 50px;
+  justify-content: center;
+
 }
 
 .cell-index {
