@@ -31,31 +31,9 @@ body {
   background: #000080;
   color: white;
 }
-.field-row-stacked {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 16px;
-}
 
-.field-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-select {
-  padding: 2px;  /* Reset padding to be minimal */
-  min-width: 100px;
-  height: 21px;  /* Windows 98 standard height */
 
-  padding-left: 4px;  /* Left padding for text */
-  padding-right: 20px;  /* Right padding for dropdown arrow */
-}
 
-/* Remove any specific padding on operation select */
-#operation {
-  padding-left: 4px;  /* Same as other selects */
-}
 
 .sunken-panel {
   background: #c0c0c0;
@@ -66,13 +44,16 @@ select {
 }
 
 .button-group {
-  display: flex;
+  display: block;
+  align-items: stretch;
   gap: 2px;
+  
 }
 
 .button-group button {
   flex: 1;
-  padding: 4px 8px;
+  width: 100px;
+  height: 102px;
   background: #c0c0c0;
   border: 2px solid;
   border-color: #ffffff #808080 #808080 #ffffff;
@@ -83,9 +64,6 @@ select {
   background: #d3d3d3;
 }
 
-.button-group button:active {
-  border-color: #808080 #ffffff #ffffff #808080;
-}
 
 .status-bar-field {
   font-size: 12px;
@@ -93,4 +71,35 @@ select {
   padding-left: 10px;
   letter-spacing: 1px;
   word-spacing: 4px;
+}
+
+.tabs {
+  width: 100%;
+}
+
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid #808080;
+  margin-bottom: 16px;
+}
+
+.tab {
+  padding: 4px 12px;
+  margin-right: 2px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  position: relative;
+  bottom: -1px;
+}
+
+.tab.active {
+  border-bottom: none;
+  background: #c0c0c0;
+  border-color: #808080 #ffffff #c0c0c0 #808080;
+  z-index: 1;
+}
+
+.tab-content {
+  padding: 16px;
 }
