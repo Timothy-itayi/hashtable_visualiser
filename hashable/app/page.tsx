@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select, SelectItem } from "@/components/ui/select"
 import { Minus, X, Square } from "lucide-react"
 
 export default function HashTableVisualizer() {
@@ -112,15 +112,14 @@ export default function HashTableVisualizer() {
           <div className="mb-4 flex flex-col md:flex-row gap-2">
             <div className="flex-1">
               <label className="block text-sm mb-1 font-bold">Operation:</label>
-              <Select value={operation} onValueChange={setOperation}>
-                <SelectTrigger className="bg-white border-2 border-t-[#808080] border-l-[#808080] border-r-white border-b-white focus:ring-0 focus:ring-offset-0">
-                  <SelectValue placeholder="Select operation" />
-                </SelectTrigger>
-                <SelectContent className="bg-[#c0c0c0] border-2 border-t-white border-l-white border-r-[#808080] border-b-[#808080]">
-                  <SelectItem value="insert">Insert</SelectItem>
-                  <SelectItem value="delete">Delete</SelectItem>
-                  <SelectItem value="search">Search</SelectItem>
-                </SelectContent>
+              <Select 
+                value={operation} 
+                onChange={(e) => setOperation(e.target.value)}
+                className="bg-white border-2 border-t-[#808080] border-l-[#808080] border-r-white border-b-white"
+              >
+                <SelectItem value="insert">Insert</SelectItem>
+                <SelectItem value="delete">Delete</SelectItem>
+                <SelectItem value="search">Search</SelectItem>
               </Select>
             </div>
             <div className="flex-1">
@@ -128,7 +127,7 @@ export default function HashTableVisualizer() {
               <Input
                 type="text"
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
                 className="bg-white border-2 border-t-[#808080] border-l-[#808080] border-r-white border-b-white focus:ring-0 focus:ring-offset-0"
                 placeholder="Enter value"
               />
@@ -145,16 +144,15 @@ export default function HashTableVisualizer() {
 
           <div className="mb-4">
             <label className="block text-sm mb-1 font-bold">Table Size:</label>
-            <Select value={tableSize.toString()} onValueChange={(value) => setTableSize(Number.parseInt(value))}>
-              <SelectTrigger className="bg-white border-2 border-t-[#808080] border-l-[#808080] border-r-white border-b-white focus:ring-0 focus:ring-offset-0">
-                <SelectValue placeholder="Select table size" />
-              </SelectTrigger>
-              <SelectContent className="bg-[#c0c0c0] border-2 border-t-white border-l-white border-r-[#808080] border-b-[#808080]">
-                <SelectItem value="5">5</SelectItem>
-                <SelectItem value="7">7</SelectItem>
-                <SelectItem value="11">11</SelectItem>
-                <SelectItem value="13">13</SelectItem>
-              </SelectContent>
+            <Select 
+              value={tableSize.toString()} 
+              onChange={(e) => setTableSize(Number.parseInt(e.target.value))}
+              className="bg-white border-2 border-t-[#808080] border-l-[#808080] border-r-white border-b-white"
+            >
+              <SelectItem value="5">5</SelectItem>
+              <SelectItem value="7">7</SelectItem>
+              <SelectItem value="11">11</SelectItem>
+              <SelectItem value="13">13</SelectItem>
             </Select>
           </div>
 
